@@ -4,7 +4,7 @@ import Footer from "./Footer"
 
 export default function MainLayout({children}) {
   return (
-    <div>
+    <div className="bg-[#F9FCFF] ">
       <Header />
       {children}
       <Footer />

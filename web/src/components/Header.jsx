@@ -31,10 +31,14 @@ export default function Header() {
     <section>
       <header
         className={`${
-          navVisible ? "bg-transparent" : "bg-dark-hard h-[100vh] items-start "
+          !navVisible ? "bg-transparent" : "bg-dark-hard h-[100vh] items-start "
         }  w-full lg:h-[80px] `}
       >
-        <div className="h-[80px] bg-white w-[100%] px-[3rem] md:px-[5rem] flex justify-between lg:items-center">
+        <div
+          className={`${
+            !navVisible ? "bg-transparent" : "bg-[#F9FCFF]"
+          } h-[80px]  w-[100%] px-[3rem] md:px-[5rem] flex justify-between lg:items-center`}
+        >
           <div className="h-[80px] items-center">
             <img
               src={images.BlogNest}
@@ -44,17 +48,17 @@ export default function Header() {
           </div>
           <div
             className={`${
-              navVisible ? "hidden" : "block"
+              !navVisible ? "hidden" : "block"
             }    lg:w-[79%] xl:w-[60%] font-sans font-semibold lg:block text-[14px] md:text-[16px] `}
           >
             <ul className="w-full flex flex-col mt-[7rem] lg:mt-0 lg:flex-row h-[80px] justify-between items-center text-white lg:text-black ">
               {navbarItems.map((item) =>
                 item.type === "link" ? (
-                  <li className="text-center lg:pt-[28px] pb-[1rem] lg:pr-[3rem] h-[80px] lg:h-[80px] w-[6.4rem] lg:w-auto">
+                  <li className="text-center lg:pt-[28px] pb-[1rem] lg:pr-[3rem] h-[80px] lg:h-[80px] w-[6.4rem] lg:w-auto mt-5 lg:mt-0 " key={item}>
                     <a href={item.url}>{item.name}</a>
                   </li>
                 ) : (
-                  <li className="text-center lg:pt-[28px] pb-[1rem] lg:pr-[3rem]  lg:h-[80px] w-[6.4rem] lg:w-[8.5rem]">
+                  <li className="text-center lg:pt-[28px] pb-[1rem] lg:pr-[3rem]  lg:h-[80px] w-[6.4rem] lg:w-[8.5rem] mt-5 lg:mt-0" key={item}>
                     <div className="flex justify-center">
                       {item.name}
                       <RiArrowDropDownLine
@@ -68,7 +72,13 @@ export default function Header() {
                       } flex flex-col text-[12px] md:text-[14px] mt-1 transition-all shadow`}
                     >
                       {item.items.map((option) => (
-                        <a className="px-1 py-1 lg:hover:bg-black lg:hover:text-white transition-all" href={option.subUrl}>{option.subName}</a>
+                        <a key={option}
+                          className="px-1 py-1 lg:hover:bg-black lg:hover:text-white transition-all"
+                          href={option.subUrl}
+                        
+                        >
+                          {option.subName}
+                        </a>
                       ))}
                     </ul>
                   </li>
@@ -80,14 +90,14 @@ export default function Header() {
             </ul>
           </div>
           <div className="lg:hidden h-[80px] flex items-center">
-            {navVisible ? (
+            {!navVisible ? (
               <AiOutlineMenu
-                className="text-[25px] md:text-[30px]"
+                className="text-[26px] md:text-[30px]"
                 onClick={navVisibleHandler}
               />
             ) : (
               <IoCloseSharp
-                className="text-[25px] md:text-[30px]"
+                className="text-[26px] md:text-[30px]"
                 onClick={navVisibleHandler}
               />
             )}
