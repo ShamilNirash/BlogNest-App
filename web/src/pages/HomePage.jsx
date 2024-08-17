@@ -4,7 +4,7 @@ import HeroSection from "../components/HeroSection";
 
 export default function HomePage() {
   return (
-    <div className="bg-[#F9FCFF] z-10">
+    <div>
       <MainLayout>
         <HeroSection />
       </MainLayout>
